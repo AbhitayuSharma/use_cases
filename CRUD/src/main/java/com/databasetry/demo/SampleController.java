@@ -25,4 +25,42 @@ public class SampleController {
     	}
     	return transformedvalues;
 	}
+	@GetMapping("/employeename")
+	public List<String> getdata(){
+		ArrayList<String> ename=new ArrayList<String>();
+    	for(EmployeeEntity emt:er.findAll()) {
+    		ename.add(emt.getEmployee_name());
+    		
+    	}
+    	return ename;
+	}
+	@GetMapping("/id") 
+	public List<Integer> getid(){
+		ArrayList<Integer> id=new ArrayList<Integer>();
+    	for(EmployeeEntity emt:er.findAll()) {
+    		id.add(emt.getId());
+    	}
+    	return id;
+	}
+	@GetMapping("/a") 
+	public ArrayList<String> geta(){
+
+		ArrayList<String> temp=new ArrayList<String>();
+    	for(EmployeeEntity emt:er.findAll()) {
+    		if(emt.getEmployee_name().startsWith("a")) {
+    			temp.add(emt.getEmployee_name());
+    		}
+    	}
+    	return temp;
+	}
+	@GetMapping("/department")
+	public ArrayList<String> getdept(){
+
+		ArrayList<String> temp=new ArrayList<String>();
+    	for(EmployeeEntity emt:er.findAll()) {
+    		temp.add(emt.getDepartment());
+    	}
+    	return temp;
+	}
+	
 }
